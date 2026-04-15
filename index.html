@@ -141,6 +141,7 @@ body {
   position: relative;
   padding: 2rem;
   overflow: hidden;
+  background: linear-gradient(rgba(247,243,237,0.82), rgba(247,243,237,0.7)), url('images/img_0645.jpg') center/cover no-repeat;
 }
 
 .hero-rings {
@@ -318,6 +319,19 @@ section { position: relative; }
   font-weight: 300;
 }
 
+.about-img {
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+}
+
+.about-img img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+}
+
 .about-aside {
   border-left: 2px solid var(--gold);
   padding-left: 2rem;
@@ -481,6 +495,37 @@ section { position: relative; }
   font-weight: 300;
 }
 
+/* ── Farm Gallery ── */
+.farm-gallery {
+  padding: 0 2rem 6rem;
+  background: var(--cream);
+}
+
+.gallery-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .gallery-grid img { height: 160px; }
+}
+
 /* ── Community ── */
 .community {
   background: var(--cream);
@@ -533,6 +578,19 @@ section { position: relative; }
   min-height: 400px;
 }
 
+.community-img {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.community-img img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+}
+
 .community-visual .rings-decor {
   width: 350px;
   height: 350px;
@@ -543,9 +601,11 @@ section { position: relative; }
 
 .community-stats {
   position: absolute;
+  bottom: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .stat {
@@ -553,7 +613,7 @@ section { position: relative; }
   background: rgba(247, 243, 237, 0.95);
   padding: 1.5rem 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
 
 .stat-num {
@@ -795,14 +855,20 @@ section { position: relative; }
   }
 
   .community-visual {
-    min-height: 280px;
+    min-height: auto;
     order: -1;
   }
 
-  .community-visual .rings-decor {
-    width: 250px;
-    height: 250px;
+  .community-img img {
+    height: 300px;
   }
+
+  .community-stats {
+    bottom: -1rem;
+    gap: 0.75rem;
+  }
+
+  .stat { padding: 1rem 1.25rem; }
 
   .hero h1 {
     letter-spacing: -0.02em;
@@ -908,6 +974,7 @@ section { position: relative; }
     </h2>
     <div class="about-grid">
       <div class="about-text reveal reveal-delay-1">
+        <div class="about-img"><img src="images/img_0643.jpg" alt="Rows of fresh greens growing inside the Rising Oak Farm greenhouse" loading="lazy"></div>
         <p>Rising Oak Farm is a small-scale regenerative farm nestled on Orcas Island in Washington's San Juan archipelago. Founded in 2021 by Chelsea Thorpe and Jesse Herzog, we steward two acres under conservation easement with the San Juan Preservation Trust.</p>
         <p>Our work is simple in its ambition and profound in its practice: nourish the land that nourishes us. Every season, every planting, every harvest is guided by this reciprocity — a commitment to leaving the soil richer than we found it.</p>
       </div>
@@ -945,9 +1012,10 @@ section { position: relative; }
   </div>
 </section>
 
-<!-- Wave divider (reversed) -->
-<svg class="divider-wave" viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" style="background:var(--forest);display:block" aria-hidden="true">
-  <path d="M0 0V40C240 10 480 70 720 40C960 10 1200 70 1440 40V0H0Z" fill="#e8ede3"/>
+<!-- Wave divider (forest to sage-light) -->
+<svg class="divider-wave" viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" style="display:block" aria-hidden="true">
+  <path d="M0 80V40C240 70 480 10 720 40C960 70 1200 10 1440 40V80H0Z" fill="#e8ede3"/>
+  <rect width="1440" height="40" fill="#1e2f23"/>
 </svg>
 
 <!-- Practices -->
@@ -994,6 +1062,16 @@ section { position: relative; }
   </div>
 </section>
 
+<!-- Farm Gallery -->
+<div class="farm-gallery reveal">
+  <div class="gallery-grid">
+    <img src="images/img_0649.jpg" alt="Fresh raspberries in baskets" loading="lazy">
+    <img src="images/img_0646.jpg" alt="Harvested squash and gourds in trailer" loading="lazy">
+    <img src="images/img_0655.jpg" alt="Seedling starts at the farmstand" loading="lazy">
+    <img src="images/img_0653.jpg" alt="Fresh leafy greens" loading="lazy">
+  </div>
+</div>
+
 <!-- Community -->
 <section class="community section-pad" id="community">
   <div class="container">
@@ -1005,13 +1083,9 @@ section { position: relative; }
         <p class="reveal reveal-delay-3">We host soil-building workshops, partner with the San Juan Agricultural Guild, and actively support the next generation of young farmers who will steward these islands. Because healthy soil and healthy communities grow from the same root.</p>
       </div>
       <div class="community-visual reveal reveal-delay-2">
-        <svg class="rings-decor" viewBox="0 0 500 500" fill="none" aria-hidden="true">
-          <circle cx="250" cy="250" r="45" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="248" cy="252" r="85" stroke="currentColor" stroke-width="1.2"/>
-          <circle cx="252" cy="248" r="130" stroke="currentColor" stroke-width="1"/>
-          <circle cx="249" cy="251" r="178" stroke="currentColor" stroke-width="0.8"/>
-          <circle cx="251" cy="249" r="225" stroke="currentColor" stroke-width="0.6"/>
-        </svg>
+        <div class="community-img">
+          <img src="images/img_0644.jpg" alt="Colorful harvest of squash and gourds from Rising Oak Farm" loading="lazy">
+        </div>
         <div class="community-stats">
           <div class="stat">
             <div class="stat-num">2</div>
@@ -1038,6 +1112,7 @@ section { position: relative; }
         <p class="reveal reveal-delay-3">Whether you're an island neighbor or visiting Orcas for the first time, you're always welcome at Rising Oak Farm.</p>
       </div>
       <div class="visit-info reveal reveal-delay-2">
+        <div class="about-img" style="margin-bottom:1.5rem;"><img src="images/img_0647.jpg" alt="Crow Valley Farmstand exterior with plants and produce" loading="lazy"></div>
         <div class="info-card">
           <h3>Crow Valley Farmstand</h3>
           <address>
